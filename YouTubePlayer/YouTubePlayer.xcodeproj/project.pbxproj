@@ -17,6 +17,7 @@
 		B716ED1D230D228600B06509 /* YouTubeQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED1C230D228600B06509 /* YouTubeQuality.swift */; };
 		B716ED1F230D2B6B00B06509 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED1E230D2B6B00B06509 /* Logger.swift */; };
 		B716ED21230D3E7200B06509 /* YouTubePlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = B716ED20230D3E7200B06509 /* YouTubePlayer.html */; };
+		B716ED23230D764D00B06509 /* YouTubeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED22230D764D00B06509 /* YouTubeStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B716ED1C230D228600B06509 /* YouTubeQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeQuality.swift; sourceTree = "<group>"; };
 		B716ED1E230D2B6B00B06509 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B716ED20230D3E7200B06509 /* YouTubePlayer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = YouTubePlayer.html; sourceTree = "<group>"; };
+		B716ED22230D764D00B06509 /* YouTubeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +66,11 @@
 		B716ED01230D1E2E00B06509 /* YouTubePlayer */ = {
 			isa = PBXGroup;
 			children = (
+				B716ED06230D1E2E00B06509 /* Main.storyboard */,
 				B716ED02230D1E2E00B06509 /* AppDelegate.swift */,
 				B716ED04230D1E2E00B06509 /* ViewController.swift */,
 				B716ED1E230D2B6B00B06509 /* Logger.swift */,
 				B716ED1A230D225B00B06509 /* YouTube */,
-				B716ED06230D1E2E00B06509 /* Main.storyboard */,
 				B716ED09230D1E2F00B06509 /* Assets.xcassets */,
 				B716ED0B230D1E2F00B06509 /* LaunchScreen.storyboard */,
 				B716ED0E230D1E2F00B06509 /* Info.plist */,
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B716ED1C230D228600B06509 /* YouTubeQuality.swift */,
+				B716ED22230D764D00B06509 /* YouTubeStatus.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				B716ED1F230D2B6B00B06509 /* Logger.swift in Sources */,
 				B716ED05230D1E2E00B06509 /* ViewController.swift in Sources */,
 				B716ED1D230D228600B06509 /* YouTubeQuality.swift in Sources */,
+				B716ED23230D764D00B06509 /* YouTubeStatus.swift in Sources */,
 				B716ED03230D1E2E00B06509 /* AppDelegate.swift in Sources */,
 				B716ED17230D1E7F00B06509 /* YouTubePlayerViewController.swift in Sources */,
 			);
