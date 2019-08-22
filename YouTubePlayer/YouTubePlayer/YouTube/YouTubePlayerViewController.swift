@@ -9,10 +9,16 @@
 import UIKit
 import WebKit
 
+// MARK: - Define
+protocol YouTubePlayerViewControllerDelegate: class {
+    func didUpdate(state: YouTubePlayerState, error: YouTubePlayerError?)
+    func didUpdate(quality: YouTubePlaybackQuality)
+    func didUpdate(playtime: TimeInterval)
+}
+
 final class YouTubePlayerViewController: UIViewController {
 
     // MARK: - IBOutlet
-    @IBOutlet private var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet private var playerView: UIView!
     
     
@@ -21,6 +27,7 @@ final class YouTubePlayerViewController: UIViewController {
     // MARK: - Value
     // MARK: Public
     var lastPlaytime: TimeInterval = 0
+    weak var delegate: YouTubePlayerViewControllerDelegate? = nil
     
     
     // MARK: Private
@@ -29,14 +36,10 @@ final class YouTubePlayerViewController: UIViewController {
         // http://stackoverflow.com/questions/26295277/wkwebview-equivalent-for-uiwebviews-scalespagetofit
         let source = "var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);"
         let userScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-        
+
         let userContentController = WKUserContentController()
         userContentController.addUserScript(userScript)
-        
-        
-//        userContentController.add(self, name: "close")
-//        userContentController.add(self, name: "share")
-        
+
         let preferences = WKPreferences()
         preferences.javaScriptEnabled                     = true
         preferences.javaScriptCanOpenWindowsAutomatically = true
@@ -48,6 +51,7 @@ final class YouTubePlayerViewController: UIViewController {
         
         
         let webView = WKWebView(frame: playerView.bounds, configuration: configuration)
+        webView.backgroundColor            = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         webView.scrollView.isScrollEnabled = false
         webView.scrollView.bounces         = false
         
@@ -59,8 +63,6 @@ final class YouTubePlayerViewController: UIViewController {
         webView.bottomAnchor.constraint(equalTo: playerView.bottomAnchor).isActive     = true
         webView.leadingAnchor.constraint(equalTo: playerView.leadingAnchor).isActive   = true
         webView.trailingAnchor.constraint(equalTo: playerView.trailingAnchor).isActive = true
-        
-        view.bringSubviewToFront(activityIndicatorView)
         return webView
     }()
     
@@ -68,41 +70,17 @@ final class YouTubePlayerViewController: UIViewController {
     
     
     
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setWebView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        webView.load(URLRequest(url: URL(string: "https://www.google.com")!))
-        
-        set(quality: .hd720)
-        guard load(id: "jy_UiIQn_d0") == true else { return }
-        activityIndicatorView.startAnimating()
-    }
     
     
     // MARK: - Function
     // MARK: Public
-    private func setWebView() {
-        webView.uiDelegate         = self
-        webView.navigationDelegate = self
-        view.layoutIfNeeded()
-    }
-    
-    func set(quality: YouTubeQuality) {
-        webView.evaluateJavaScript(String(format: "player.setPlaybackQuality('%@');", quality.rawValue)) { (response, error) in
-            guard error == nil else {
-                log(.error, error?.localizedDescription)
-                return
-            }
-        }
-    }
-    
     func load(id: String) -> Bool {
         var parameters:  [String : Any] {
             return ["videoId"    : id,
@@ -118,6 +96,7 @@ final class YouTubePlayerViewController: UIViewController {
                     "events" : ["onReady"                 : "onReady",
                                 "onStateChange"           : "onStateChange",
                                 "onPlaybackQualityChange" : "onPlaybackQualityChange",
+                                "onFullscreen"            : "onFullscreen",
                                 "onError"                 : "onPlayerError"]
             ]
         }
@@ -125,38 +104,75 @@ final class YouTubePlayerViewController: UIViewController {
         guard  let data = try? JSONSerialization.data(withJSONObject: parameters, options: []), let jsonString = String(data: data, encoding: .utf8),
             let contentsURL = Bundle.main.url(forResource: "YouTubePlayer", withExtension: "html"), let format = try? String(contentsOf: contentsURL, encoding: .utf8) else { return false }
         
-        
-        
         webView.loadHTMLString(String(format: format, jsonString), baseURL: baseURL)
         return true
     }
     
     
-    // MARK: Private
-    private func get(completion: @escaping (_ quality: YouTubeQuality) -> Void) {
-        webView.evaluateJavaScript("player.getPlaybackQuality();") { (response, error) in
-            completion(YouTubeQuality(rawValue: (response as? String ?? "")) ?? .none)
+    // MARK: Player
+    func play() {
+        webView.evaluateJavaScript("player.playVideo();") { (response, error) in
+            self.delegate?.didUpdate(state: .playing, error: nil)
+        }
+    }
+    
+    func stop() {
+        webView.evaluateJavaScript("player.stopVideo();")
+    }
+    
+    func pause() {
+        webView.evaluateJavaScript("player.pauseVideo();") { (response, error) in
+            self.delegate?.didUpdate(state: .paused, error: nil)
         }
     }
     
     
+    // MARK: Settings
+    func set(quality: YouTubePlaybackQuality) {
+        webView.evaluateJavaScript(String(format: "player.setPlaybackQuality('%@');", quality.rawValue))
+    }
+    
+    private func get(completion: @escaping (_ quality: YouTubePlaybackQuality) -> Void) {
+        webView.evaluateJavaScript("player.getPlaybackQuality();") { (response, error) in
+            completion(YouTubePlaybackQuality(rawValue: (response as? String ?? "")) ?? .unknown)
+        }
+    }
+    
+    
+    // MARK: Private
+    private func setWebView() {
+        webView.uiDelegate         = self
+        webView.navigationDelegate = self
+        view.layoutIfNeeded()
+    }
+    
     private func handleStatus(url: URL) {
-        guard let host = url.host, let status = YouTubeStatus(rawValue: host) else { return }
-        
-        
-        let data   = url.query?.components(separatedBy: "=").last
-        
+        guard let component = URLComponents(url: url, resolvingAgainstBaseURL: true), let host = component.host, let status = YouTubeStatus(rawValue: host) else { return }
         switch status {
         case .ready:
-            break
+            delegate?.didUpdate(state: .ready, error: nil)
             
         case .stateChanged:
+            let state = YouTubePlayerState(rawValue: component.queryItems?.first?.value ?? "") ?? .unknown
+            delegate?.didUpdate(state: state, error: nil)
             
+        case .playbackQualityChange:
+            delegate?.didUpdate(quality: YouTubePlaybackQuality(rawValue: component.queryItems?.first?.value ?? "") ?? .unknown)
             
+        case .error:
+            let error = YouTubePlayerError(rawValue: component.queryItems?.first?.value ?? "") ?? .unknown
+            delegate?.didUpdate(state: .unknown, error: error)
             
+        case .playTime:
+            let time = TimeInterval(component.queryItems?.first?.value ?? "") ?? 0
+            delegate?.didUpdate(playtime: time)
             
+        case .youTubeIframeAPIReady:
+            break
+            
+        case .youTubeIframeAPIFailedToLoad:
+            break
         }
-        
     }
     
     private func handleHttpNavigation(url: URL) -> Bool {
@@ -177,13 +193,10 @@ final class YouTubePlayerViewController: UIViewController {
         return false
     }
     
-    
-    
     private func close() {
-        webView.removeFromSuperview()
-        webView.uiDelegate = nil
+        webView.uiDelegate         = nil
         webView.navigationDelegate = nil
-        webView.configuration.userContentController.removeScriptMessageHandler(forName: "close")
+        webView.removeFromSuperview()
     }
 }
 
@@ -215,18 +228,6 @@ extension YouTubePlayerViewController: WKNavigationDelegate {
             decisionHandler(.allow)
         }
     }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        activityIndicatorView.stopAnimating()
-    }
-    
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        activityIndicatorView.stopAnimating()
-    }
-    
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
-        activityIndicatorView.stopAnimating()
-    }
 }
 
 
@@ -249,27 +250,6 @@ extension YouTubePlayerViewController: WKUIDelegate {
             
             alertController.addAction(action)
             self.present(alertController, animated: true, completion: nil)
-        }
-    }
-}
-
-
-// MARK: - WKScriptMessageHandler
-extension YouTubePlayerViewController: WKScriptMessageHandler {
-    
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        switch message.name {
-        case "share":
-            guard let string = message.body as? String, let url = URL(string: string) else { return }
-            
-            DispatchQueue.main.async {
-                let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-                self.present(activityViewController, animated: true)
-            }
-            
-        case "close":
-            break
-        default:            break
         }
     }
 }

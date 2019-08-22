@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B70E38C8230E21E00005CE63 /* YouTubePlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38C7230E21E00005CE63 /* YouTubePlayerState.swift */; };
+		B70E38CA230E275B0005CE63 /* YouTubePlaybackQuality1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38C9230E275B0005CE63 /* YouTubePlaybackQuality1.swift */; };
+		B70E38CC230E88CE0005CE63 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38CB230E88CE0005CE63 /* SegueHandlerType.swift */; };
 		B716ED03230D1E2E00B06509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED02230D1E2E00B06509 /* AppDelegate.swift */; };
 		B716ED05230D1E2E00B06509 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED04230D1E2E00B06509 /* ViewController.swift */; };
 		B716ED08230D1E2E00B06509 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B716ED06230D1E2E00B06509 /* Main.storyboard */; };
@@ -14,13 +17,16 @@
 		B716ED0D230D1E2F00B06509 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B716ED0B230D1E2F00B06509 /* LaunchScreen.storyboard */; };
 		B716ED17230D1E7F00B06509 /* YouTubePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED16230D1E7F00B06509 /* YouTubePlayerViewController.swift */; };
 		B716ED19230D1F4400B06509 /* YouTube.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B716ED18230D1F4400B06509 /* YouTube.storyboard */; };
-		B716ED1D230D228600B06509 /* YouTubeQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED1C230D228600B06509 /* YouTubeQuality.swift */; };
+		B716ED1D230D228600B06509 /* YouTubePlaybackQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED1C230D228600B06509 /* YouTubePlaybackQuality.swift */; };
 		B716ED1F230D2B6B00B06509 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED1E230D2B6B00B06509 /* Logger.swift */; };
 		B716ED21230D3E7200B06509 /* YouTubePlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = B716ED20230D3E7200B06509 /* YouTubePlayer.html */; };
 		B716ED23230D764D00B06509 /* YouTubeStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED22230D764D00B06509 /* YouTubeStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B70E38C7230E21E00005CE63 /* YouTubePlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerState.swift; sourceTree = "<group>"; };
+		B70E38C9230E275B0005CE63 /* YouTubePlaybackQuality1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlaybackQuality1.swift; sourceTree = "<group>"; };
+		B70E38CB230E88CE0005CE63 /* SegueHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		B716ECFF230D1E2E00B06509 /* YouTubePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTubePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B716ED02230D1E2E00B06509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B716ED04230D1E2E00B06509 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,7 +36,7 @@
 		B716ED0E230D1E2F00B06509 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B716ED16230D1E7F00B06509 /* YouTubePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerViewController.swift; sourceTree = "<group>"; };
 		B716ED18230D1F4400B06509 /* YouTube.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YouTube.storyboard; sourceTree = "<group>"; };
-		B716ED1C230D228600B06509 /* YouTubeQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeQuality.swift; sourceTree = "<group>"; };
+		B716ED1C230D228600B06509 /* YouTubePlaybackQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlaybackQuality.swift; sourceTree = "<group>"; };
 		B716ED1E230D2B6B00B06509 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B716ED20230D3E7200B06509 /* YouTubePlayer.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = YouTubePlayer.html; sourceTree = "<group>"; };
 		B716ED22230D764D00B06509 /* YouTubeStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubeStatus.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 				B716ED06230D1E2E00B06509 /* Main.storyboard */,
 				B716ED02230D1E2E00B06509 /* AppDelegate.swift */,
 				B716ED04230D1E2E00B06509 /* ViewController.swift */,
+				B70E38CB230E88CE0005CE63 /* SegueHandlerType.swift */,
 				B716ED1E230D2B6B00B06509 /* Logger.swift */,
 				B716ED1A230D225B00B06509 /* YouTube */,
 				B716ED09230D1E2F00B06509 /* Assets.xcassets */,
@@ -92,8 +99,10 @@
 		B716ED1B230D226700B06509 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B716ED1C230D228600B06509 /* YouTubeQuality.swift */,
+				B716ED1C230D228600B06509 /* YouTubePlaybackQuality.swift */,
 				B716ED22230D764D00B06509 /* YouTubeStatus.swift */,
+				B70E38C7230E21E00005CE63 /* YouTubePlayerState.swift */,
+				B70E38C9230E275B0005CE63 /* YouTubePlaybackQuality1.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -173,9 +182,12 @@
 			files = (
 				B716ED1F230D2B6B00B06509 /* Logger.swift in Sources */,
 				B716ED05230D1E2E00B06509 /* ViewController.swift in Sources */,
-				B716ED1D230D228600B06509 /* YouTubeQuality.swift in Sources */,
+				B70E38C8230E21E00005CE63 /* YouTubePlayerState.swift in Sources */,
+				B716ED1D230D228600B06509 /* YouTubePlaybackQuality.swift in Sources */,
+				B70E38CA230E275B0005CE63 /* YouTubePlaybackQuality1.swift in Sources */,
 				B716ED23230D764D00B06509 /* YouTubeStatus.swift in Sources */,
 				B716ED03230D1E2E00B06509 /* AppDelegate.swift in Sources */,
+				B70E38CC230E88CE0005CE63 /* SegueHandlerType.swift in Sources */,
 				B716ED17230D1E7F00B06509 /* YouTubePlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

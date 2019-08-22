@@ -39,22 +39,25 @@
                      player = new YT.Player('player', %@);
                      player.setSize(window.innerWidth, window.innerHeight);
                      window.location.href = 'ytplayer://onYouTubeIframeAPIReady';
+                    
                      // this will transmit playTime frequently while playng
                      function getCurrentTime() {
-                     var state = player.getPlayerState();
-                     if (state == YT.PlayerState.PLAYING) {
-                     time = player.getCurrentTime()
-                     window.location.href = 'ytplayer://onPlayTime?data=' + time;
-                     }
+                        var state = player.getPlayerState();
+                        if (state == YT.PlayerState.PLAYING) {
+                            time = player.getCurrentTime()
+                            window.location.href = 'ytplayer://onPlayTime?data=' + time;
+                        }
                      }
                      
                      window.setInterval(getCurrentTime, 500);
                      });
+                     
                      function onReady(event) {
                          window.location.href = 'ytplayer://onReady?data=' + event.data;
                          document.getElementById('player').contentDocument.getElementsByClassName('ytp-watch-later-button')[0].style.display = 'none';
                          document.getElementById('player').contentDocument.getElementsByClassName('ytp-share-button')[0].style.display = 'none';
                      }
+        
         function onStateChange(event) {
             if (!error) {
                 window.location.href = 'ytplayer://onStateChange?data=' + event.data;
@@ -63,9 +66,11 @@
                 error = false;
             }
         }
+        
         function onPlaybackQualityChange(event) {
             window.location.href = 'ytplayer://onPlaybackQualityChange?data=' + event.data;
         }
+        
         function onPlayerError(event) {
             if (event.data == 100) {
                 error = true;

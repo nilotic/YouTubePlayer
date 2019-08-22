@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum YouTubeStatus: String, Codable {
+enum YouTubeStatus: String {
     case ready                        = "onReady"
     case stateChanged                 = "onStateChange"
     case playbackQualityChange        = "onPlaybackQualityChange"
