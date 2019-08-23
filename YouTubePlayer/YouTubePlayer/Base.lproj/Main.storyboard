@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="YouTubePlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V9F-96-8sI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="233"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="V9F-96-8sI" secondAttribute="height" multiplier="16:9" id="ThT-Y1-Bso"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="lx5-Ly-OAH" kind="embed" identifier="YouTubePlayerSegue" id="qw8-n5-gbx"/>
+                                </connections>
+                            </containerView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="geM-G6-wbQ">
+                                <rect key="frame" x="197" y="150.5" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="geM-G6-wbQ" firstAttribute="centerY" secondItem="V9F-96-8sI" secondAttribute="centerY" id="5Zl-SX-815"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="V9F-96-8sI" secondAttribute="trailing" id="Afy-J5-XhX"/>
+                            <constraint firstItem="V9F-96-8sI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Tpm-jd-zIQ"/>
+                            <constraint firstItem="geM-G6-wbQ" firstAttribute="centerX" secondItem="V9F-96-8sI" secondAttribute="centerX" id="je2-Qa-UK4"/>
+                            <constraint firstItem="V9F-96-8sI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ynJ-g6-cVV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="geM-G6-wbQ" id="GEx-Hu-5bw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--YouTubePlayerViewController-->
+        <scene sceneID="Zha-OW-ri9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="YouTube" referencedIdentifier="YouTubePlayerViewController" id="lx5-Ly-OAH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FfN-SP-Xhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957" y="143"/>
+        </scene>
+    </scenes>
+</document>

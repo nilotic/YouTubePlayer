@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--You Tube Player View Controller-->
+        <scene sceneID="OWd-EH-ZEW">
+            <objects>
+                <viewController storyboardIdentifier="YouTubePlayerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T2P-87-jHD" customClass="YouTubePlayerViewController" customModule="YouTubePlayer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DdP-Bi-Uby">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUS-8B-XtT">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gUS-8B-XtT" firstAttribute="top" secondItem="DNN-yp-x3e" secondAttribute="top" id="GCt-2L-5Wd"/>
+                            <constraint firstItem="gUS-8B-XtT" firstAttribute="leading" secondItem="DNN-yp-x3e" secondAttribute="leading" id="sFJ-xz-wUp"/>
+                            <constraint firstItem="DNN-yp-x3e" firstAttribute="trailing" secondItem="gUS-8B-XtT" secondAttribute="trailing" id="u1S-U1-cXe"/>
+                            <constraint firstAttribute="bottom" secondItem="gUS-8B-XtT" secondAttribute="bottom" constant="34" id="ySH-hn-LYV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DNN-yp-x3e"/>
+                    </view>
+                    <connections>
+                        <outlet property="playerView" destination="gUS-8B-XtT" id="KiD-42-8dG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oit-9Z-1Ei" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339" y="133"/>
+        </scene>
+    </scenes>
+</document>
