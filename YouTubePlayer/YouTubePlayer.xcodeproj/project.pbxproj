@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B70E38C8230E21E00005CE63 /* YouTubePlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38C7230E21E00005CE63 /* YouTubePlayerState.swift */; };
-		B70E38CA230E275B0005CE63 /* YouTubePlaybackQuality1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38C9230E275B0005CE63 /* YouTubePlaybackQuality1.swift */; };
+		B70E38CA230E275B0005CE63 /* YouTubePlayerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38C9230E275B0005CE63 /* YouTubePlayerError.swift */; };
 		B70E38CC230E88CE0005CE63 /* SegueHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70E38CB230E88CE0005CE63 /* SegueHandlerType.swift */; };
 		B716ED03230D1E2E00B06509 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED02230D1E2E00B06509 /* AppDelegate.swift */; };
 		B716ED05230D1E2E00B06509 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B716ED04230D1E2E00B06509 /* ViewController.swift */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		B70E38C7230E21E00005CE63 /* YouTubePlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerState.swift; sourceTree = "<group>"; };
-		B70E38C9230E275B0005CE63 /* YouTubePlaybackQuality1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlaybackQuality1.swift; sourceTree = "<group>"; };
+		B70E38C9230E275B0005CE63 /* YouTubePlayerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouTubePlayerError.swift; sourceTree = "<group>"; };
 		B70E38CB230E88CE0005CE63 /* SegueHandlerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueHandlerType.swift; sourceTree = "<group>"; };
 		B716ECFF230D1E2E00B06509 /* YouTubePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouTubePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B716ED02230D1E2E00B06509 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				B716ED1C230D228600B06509 /* YouTubePlaybackQuality.swift */,
 				B716ED22230D764D00B06509 /* YouTubeStatus.swift */,
 				B70E38C7230E21E00005CE63 /* YouTubePlayerState.swift */,
-				B70E38C9230E275B0005CE63 /* YouTubePlaybackQuality1.swift */,
+				B70E38C9230E275B0005CE63 /* YouTubePlayerError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,7 +184,7 @@
 				B716ED05230D1E2E00B06509 /* ViewController.swift in Sources */,
 				B70E38C8230E21E00005CE63 /* YouTubePlayerState.swift in Sources */,
 				B716ED1D230D228600B06509 /* YouTubePlaybackQuality.swift in Sources */,
-				B70E38CA230E275B0005CE63 /* YouTubePlaybackQuality1.swift in Sources */,
+				B70E38CA230E275B0005CE63 /* YouTubePlayerError.swift in Sources */,
 				B716ED23230D764D00B06509 /* YouTubeStatus.swift in Sources */,
 				B716ED03230D1E2E00B06509 /* AppDelegate.swift in Sources */,
 				B70E38CC230E88CE0005CE63 /* SegueHandlerType.swift in Sources */,
